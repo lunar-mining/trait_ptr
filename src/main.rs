@@ -9,8 +9,8 @@ fn main() {
 pub type MyTraitPtr = Arc<dyn MyTrait>;
 
 #[async_trait]
-pub trait MyTrait {
-    async fn foo(&self) {}
+pub trait MyTrait: Sync {
+    async fn foo(Arc<Self>) {}
 }
 
 pub struct Parent {
